@@ -1,0 +1,23 @@
+.select-categories{
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.select-categories:focus{
+  outline: none;
+  box-shadow: 0 0 0 2px #ddd;
+}
+
+.select-categories option{
+  background-color: #fff;
+  color: #333;
+}

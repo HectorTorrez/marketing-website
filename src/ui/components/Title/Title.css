@@ -1,0 +1,11 @@
+.container{
+  display: flex;
+  justify-content: center;
+  margin: 20px 0px;
+}
+
+.app-title h1 {
+  font-size: 3.0rem;
+  color: blueviolet;
+  
+}

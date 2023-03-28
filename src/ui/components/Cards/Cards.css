@@ -1,0 +1,87 @@
+
+
+.main-card{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.card-body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  
+  border: 1px solid #ccc;
+   border-radius: 4px;
+  background-color: #dcd6eb;
+   color: #000;
+   transition: transform 0.3s ease;
+   
+}
+
+/* .card-body:hover{
+  transform: translateY(-10px);
+} */
+.card-body h3{
+  font-size: 2rem;
+  color: rgb(176, 133, 216) ;
+}
+
+.card-body--img img{
+  max-width: 100%;
+ 
+}
+.card-body--description{
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+.card-description--more{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.card-description--more p {
+  font-size: 1.5rem;
+}
+.card-description--price p:first-child{
+  font-weight: bold;
+}
+
+.card-section--button{
+align-self: flex-end;
+cursor: pointer;
+}
+
+
+.card-more--button:hover{
+  background-color: rgb(176, 133, 216);
+  color: #b19cd9;
+}
+
+.card-add--button{
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
+  background-color: #e2ccf3;
+  color: #000;
+  border: 1px solid #ccc;
+   border-radius: 4px;
+   transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+
+}
+.card-add--button:hover{
+  transform: scale(1.1);
+}
+
+
