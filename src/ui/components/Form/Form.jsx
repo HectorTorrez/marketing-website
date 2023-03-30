@@ -1,24 +1,47 @@
+import { useEffect, useState } from 'react'
 import './Form.css'
 
-export const Search = ({ input, setInput }) => {
+export const Search = ({ products, setResult, setIsLoading }) => {
 
-  const onSubmit = (event) => {
-    event.preventDefault()
+  const [input, setInput] = useState("")
+
+
+  // const onSubmit = (event) => {
+  //   event.preventDefault()
+  // }
+
+
+
+  const handleDown = (event) => {
+    if (event.key === 'Enter') {
+      onClick()
+    }
   }
 
-  const onChange = ({ target }) => {
-    setInput(target.value)
+  const onClick = () => {
+    const results = !input ? products : products.filter(dato => dato.title.toLowerCase().includes(input.toLowerCase()))
+    setResult(results)
+    setIsLoading(false)
+    setInput(results)
+    setInput("")
   }
   return (
-    <form className="search--form"
-      onSubmit={onSubmit}>
+    // <form className="search--form"
+    /* onSubmit={onSubmit}> */
+    <div className='search--form'>
       <input
         className="search--input"
         type="text"
-        onChange={onChange}
+        onChange={(event) => (
+          setInput(event.target.value)
+        )}
+        onKeyDown={handleDown}
         value={input}
       />
-      <button className="search--button">Search</button>
-    </form>
+      <button
+        onClick={onClick}
+        className="search--button">Search</button>
+    </div>
+    // </form>
   )
 }

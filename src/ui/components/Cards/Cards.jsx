@@ -9,14 +9,20 @@ import { Categories } from '../Categories'
 import { Search } from '../Form/Form'
 import { AddToCartIcon } from '../Icons/Icons'
 
-
+//TODO: agregar un useState que tenga el total inicializado en 0 y cuando cambia (useEffect) el chopingCart agregar o eliminar un item
 export const Cards = () => {
   // const [products, setProducts] = useState([])
   const [shoppingCart, setShoppingCart] = useState([])
   const [selectedCategory, setSelectedCategory] = useState("");
   const [isLoading, setIsLoading] = useState(true)
   const [input, setInput] = useState("")
+  const [result, setResult] = useState([])
+  const [total, setTotal] = useState(0)
 
+
+  useEffect(() => {
+
+  },)
 
   const { products, setProducts } = useContext(UserContext)
 
@@ -29,34 +35,49 @@ export const Cards = () => {
     const findProduct = products.find(product => product.id === id)
 
     if (findProduct) {
+      setTotal(total + findProduct.price)
       setShoppingCart([...shoppingCart, findProduct])
     }
+
   }
 
-  const onDelete = (id) => {
+  const onDelete = (id, price) => {
     const deleteProduct = shoppingCart.filter(shopping => shopping.id !== id)
+    // const priceProduct = shoppingCart.filter(shopping => shopping.id === id)
+
     setShoppingCart(deleteProduct)
+    setTotal(total - price)
+
   }
+  useEffect(() => {
+    setResult(products)
+  }, [products])
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const data = await getProducts(selectedCategory)
-      setProducts(data)
-      setIsLoading(false)
-    }
-    fetchProducts()
+    // const fetchProducts = async () => {
+    //   const data = await getProducts(selectedCategory)
+    //   setProducts(data)
+    //   setIsLoading(false)
+    // }
+    // fetchProducts()
+
+    getProducts(selectedCategory, setProducts)
+    setResult(products)
   }, [selectedCategory])
 
 
 
+  useEffect(() => {
+    const results = !input ? products : products.filter(dato => dato.title.toLowerCase().includes(input.toLowerCase()))
+    setResult(results)
+    setIsLoading(false)
+  }, [])
 
 
-
-  const result = !input ? products : products.filter(dato => dato.title.toLowerCase().includes(input.toLowerCase()))
 
   return (
     <>
-      <Search input={input} setInput={setInput} />
+      <Search setResult={setResult} setIsLoading={setIsLoading} products={products} />
 
       {
         isLoading && <Loading />
@@ -84,18 +105,18 @@ export const Cards = () => {
                         <p>{product.description}</p>
                       </div>
                       <div className='card-section--button'>
-                        {/* <Link className='card-more--button' to={`cards/${product.id}`} >
+                        <Link className='card-more--button' to={`cards/${product.id}`} >
                           See more
-                        </Link> */}
+                        </Link>
 
                         <button
                           className='card-add--button'
                           onClick={() => {
-                            isProductInCart ? onDelete(product.id) : onCart(product.id)
+                            isProductInCart ? onDelete(product.id, product.price) : onCart(product.id)
                           }
                           }
                         >
-                          Add
+                          {isProductInCart ? 'Delete' : 'Add'}
                           <AddToCartIcon />
                         </button>
                       </div>
@@ -108,7 +129,7 @@ export const Cards = () => {
         }
       </section>
 
-      <Aside shoppingCart={shoppingCart} onDelete={onDelete} setShoppingCart={setShoppingCart} />
+      <Aside shoppingCart={shoppingCart} onDelete={onDelete} setShoppingCart={setShoppingCart} total={total} />
     </>
   )
 }

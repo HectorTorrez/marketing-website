@@ -3,7 +3,7 @@ import { CartItem } from '../CartItem/CartItem'
 import { CartIcon, ClearCartIcon } from '../Icons/Icons'
 import './Aside.css'
 
-export const Aside = ({ shoppingCart, onDelete, setShoppingCart }) => {
+export const Aside = ({ shoppingCart, onDelete, setShoppingCart, total }) => {
 
   const cartCheckboxId = useId()
 
@@ -40,12 +40,12 @@ export const Aside = ({ shoppingCart, onDelete, setShoppingCart }) => {
             <CartItem
               key={cart.id}
               {...cart}
-              onDelete={() => onDelete(cart.id)}
+              onDelete={() => onDelete(cart.id, cart.price)}
             />
           ))}
         </ul>
 
-
+        <label>{total}</label>
       </aside>
     </>
   )

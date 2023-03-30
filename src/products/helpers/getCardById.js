@@ -1,11 +1,13 @@
-import { useContext } from "react"
-import { UserContext } from "../components/ProductContext/UserContext"
 
 
-export const getCardById = async (id) => {
-  const { products } = useContext(UserContext)
-  return products.find(product => product.id === id)
 
-
+export const getCardById = (id, products) => {
+  const h = parseInt(id)
+  console.log(products)
+  console.log(id)
+  const data = products.find(product => product.id == h)
+  console.log(data)
+  return data
 }
+
 

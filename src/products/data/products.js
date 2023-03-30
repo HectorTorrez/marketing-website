@@ -1,22 +1,40 @@
+import { useState } from "react"
 
-export const getProducts = async (selectedCategory = '', input = '') => {
-  console.log(input)
+export const getProducts = (selectedCategory = '', setProducts) => {
+
   const url = selectedCategory === "" ? 'https://dummyjson.com/products' : `https://dummyjson.com/products/category/${selectedCategory}`
 
-  const response = await fetch(url)
-  const { products } = await response.json()
+  // const response = await fetch(url)
+  // const { products } = await response.json()
 
 
-  const dataProducts = products.map(product => ({
-    id: product.id,
-    title: product.title,
-    price: product.price,
-    description: product.description,
-    thumbnail: product.thumbnail
+  // const dataProducts = products.map(product => ({
+  //   id: product.id,
+  //   title: product.title,
+  //   price: product.price,
+  //   description: product.description,
+  //   thumbnail: product.thumbnail
 
-  }))
-  return dataProducts
+  // }))
+  // return dataProducts
 
+
+  fetch(url)
+    .then(resp => resp.json())
+    .then(data => {
+      const { products } = data
+      const getProduct = products.map(product => ({
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        description: product.description,
+        thumbnail: product.thumbnail
+
+      }))
+
+      setProducts(getProduct)
+      return getProduct
+    })
 
 
 
