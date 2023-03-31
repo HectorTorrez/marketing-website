@@ -36,6 +36,7 @@ export const Aside = ({ shoppingCart, onDelete, setShoppingCart, total, setTotal
           )
         }
 
+        <p className='cart-total'>Total ${total}</p>
         <ul>
           {shoppingCart.map((cart) => (
             <CartItem
@@ -46,7 +47,6 @@ export const Aside = ({ shoppingCart, onDelete, setShoppingCart, total, setTotal
           ))}
         </ul>
 
-        <label>{total}</label>
       </aside>
     </>
   )
