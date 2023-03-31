@@ -3,12 +3,13 @@ import { CartItem } from '../CartItem/CartItem'
 import { CartIcon, ClearCartIcon } from '../Icons/Icons'
 import './Aside.css'
 
-export const Aside = ({ shoppingCart, onDelete, setShoppingCart, total }) => {
+export const Aside = ({ shoppingCart, onDelete, setShoppingCart, total, setTotal }) => {
 
   const cartCheckboxId = useId()
 
   const handleClear = () => {
     setShoppingCart([])
+    setTotal(0)
   }
 
 

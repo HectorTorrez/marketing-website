@@ -55,13 +55,28 @@
 }
 
 .card-section--button{
-align-self: flex-end;
-cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-more--button{
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
+
+  color: #000;
+  border: 1px solid #ccc;
+   border-radius: 4px;
+   transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  
 }
 
-
 .card-more--button:hover{
-  background-color: rgb(176, 133, 216);
+  
   color: #b19cd9;
 }
 
@@ -84,4 +99,25 @@ cursor: pointer;
   transform: scale(1.1);
 }
 
+.btn-delete{
 
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
+
+   border-radius: 4px;
+   transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+
+
+  background-color: transparent;
+  border: 1px solid red;
+  color: red;
+}
+
+.btn-delete:hover{
+  transform: scale(1.1);
+}

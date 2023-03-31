@@ -1,8 +1,8 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import './index.css'
-import { ProductDetails } from './products/components/ProductDetails'
+import { Route, Routes } from 'react-router-dom'
 import { Cards } from './ui/components/Cards/Cards'
 import { MainLayout } from './ui/components/Main/MainLayout'
+import './index.css'
+import { ProductDetails } from './products/components/ProdcutDetails/ProductDetails'
 
 
 

@@ -1,8 +1,9 @@
 // import { useMemo } from "react"
 import { useContext, useEffect, useMemo, useState } from "react"
 import { Navigate, useNavigate, useParams } from "react-router-dom"
-import { getCardById } from "../helpers/getCardById"
-import { UserContext } from "./ProductContext/UserContext"
+import { getCardById } from "../../helpers/getCardById"
+
+import { UserContext } from "../ProductContext/UserContext"
 import './ProductDetails.css'
 
 
@@ -56,6 +57,7 @@ export const ProductDetails = () => {
               </figure>
               <footer className='product-body--description'>
                 <div className='product-description--more'>
+                  <p>${product.price}</p>
                   <p>{product.description}</p>
                   <button
                     className="product--button"

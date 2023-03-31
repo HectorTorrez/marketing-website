@@ -7,9 +7,8 @@ import './Cards.css'
 import { Loading } from '../Loading'
 import { Categories } from '../Categories'
 import { Search } from '../Form/Form'
-import { AddToCartIcon } from '../Icons/Icons'
+import { AddToCartIcon, RemoveFromCartIcon } from '../Icons/Icons'
 
-//TODO: agregar un useState que tenga el total inicializado en 0 y cuando cambia (useEffect) el chopingCart agregar o eliminar un item
 export const Cards = () => {
   // const [products, setProducts] = useState([])
   const [shoppingCart, setShoppingCart] = useState([])
@@ -110,14 +109,16 @@ export const Cards = () => {
                         </Link>
 
                         <button
-                          className='card-add--button'
+                          className={`${isProductInCart ? 'btn-delete' : 'card-add--button'} `}
                           onClick={() => {
                             isProductInCart ? onDelete(product.id, product.price) : onCart(product.id)
                           }
                           }
                         >
                           {isProductInCart ? 'Delete' : 'Add'}
-                          <AddToCartIcon />
+                          {
+                            isProductInCart ? <RemoveFromCartIcon /> : <AddToCartIcon />
+                          }
                         </button>
                       </div>
                     </div>
@@ -129,7 +130,7 @@ export const Cards = () => {
         }
       </section>
 
-      <Aside shoppingCart={shoppingCart} onDelete={onDelete} setShoppingCart={setShoppingCart} total={total} />
+      <Aside shoppingCart={shoppingCart} onDelete={onDelete} setShoppingCart={setShoppingCart} total={total} setTotal={setTotal} />
     </>
   )
 }

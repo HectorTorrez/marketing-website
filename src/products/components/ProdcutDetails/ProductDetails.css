@@ -24,6 +24,7 @@
 }
 .product-body--description{
   display: flex;
+  justify-content: center;
   width: 100%;
   gap: 10px;
 }
@@ -31,6 +32,10 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
+}
+.product-description--more p:first-child{
+  font-size: 2.0rem;
+  font-weight: bold;
 }
 .product-description--more p {
   font-size: 1.5rem;
