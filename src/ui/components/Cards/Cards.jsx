@@ -11,19 +11,32 @@ import { AddToCartIcon, RemoveFromCartIcon } from '../Icons/Icons'
 
 export const Cards = () => {
   // const [products, setProducts] = useState([])
-  const [shoppingCart, setShoppingCart] = useState([])
+  const [shoppingCart, setShoppingCart] = useState(() => {
+    const savedItem = localStorage.getItem("cartItems");
+    const parsedItem = JSON.parse(savedItem);
+    return parsedItem || []
+  });
   const [selectedCategory, setSelectedCategory] = useState("");
   const [isLoading, setIsLoading] = useState(true)
   const [input, setInput] = useState("")
   const [result, setResult] = useState([])
-  const [total, setTotal] = useState(0)
+  const [total, setTotal] = useState(() => {
+    const savedItem = localStorage.getItem("cartTotal");
+    const parsedItem = JSON.parse(savedItem);
+    return parsedItem || 0
+  })
+  const { products, setProducts } = useContext(UserContext)
+
 
 
   useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(shoppingCart));
+    localStorage.setItem("cartTotal", JSON.stringify(total));
+  }, [shoppingCart, total]);
 
-  },)
 
-  const { products, setProducts } = useContext(UserContext)
+
+
 
   const checkProductInCart = (id) => {
     return shoppingCart.some(item => item.id === id)
@@ -39,6 +52,8 @@ export const Cards = () => {
     }
 
   }
+
+
 
   const onDelete = (id, price) => {
     const deleteProduct = shoppingCart.filter(shopping => shopping.id !== id)

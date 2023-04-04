@@ -33,8 +33,8 @@
 }
 
 .card-body--img img{
-  max-width: 100%;
- 
+  width: 280px;
+  height: 200px;
 }
 .card-body--description{
   display: flex;
